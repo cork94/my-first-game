@@ -23,7 +23,7 @@ class Map:
         rows = []
         for node in self.nodes:
             rowsLen = len(rows)
-            coordY = int(node.y)
+            coordY = node.y
             if(rowsLen-1 < coordY):
                 rows.append([])
             match node.blocktype:
@@ -49,8 +49,8 @@ class Map:
 
 class Node:
     def __init__(self, x, y, val):
-        self.x = x
-        self.y = y
+        self.x = int(x)
+        self.y = int(y)
         
         valUp = val.upper()
         self.blocktype = BlockValue.__members__.get(valUp)
@@ -66,8 +66,9 @@ class BlockValue(Enum):
     PLAYER = 5
 
 
-loadMapXml = ET.parse("tutorialMap.xml")
-map = Map("tutorialMap.xml")
-print("----------------Start Position-----------------------")
-print(map)
+if __name__ == '__main__' :
+    loadMapXml = ET.parse("tutorialMap.xml")
+    map = Map("tutorialMap.xml")
+    print("----------------Start Position-----------------------")
+    print(map)
     
