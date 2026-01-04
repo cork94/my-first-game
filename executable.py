@@ -15,11 +15,6 @@ class Map:
             self.nodes.append(Node(x,y,blockValue))
         
         self.mapMatrixRepresentation = []
-    
-    def __str__(self) :
-        if len(self.nodes) == 0:
-            return f"{self.name} has no nodes."
-        
         rows = []
         for node in self.nodes:
             rowsLen = len(rows)
@@ -39,8 +34,13 @@ class Map:
                     rows[coordY].append('P')
         
         self.mapMatrixRepresentation = rows
+    
+    def __str__(self) :
+        if len(self.nodes) == 0:
+            return f"{self.name} has no nodes."
+        
         matrixText = ""
-        for row in rows:
+        for row in self.mapMatrixRepresentation:
             for ele in row:
                 matrixText += f"{ele} "
             matrixText += "\n"
